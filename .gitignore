@@ -1,0 +1,5 @@
+/target/
+/bin/
+/build/
+/external/
+**/.DS_Store

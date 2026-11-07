@@ -1,0 +1,7 @@
+#!/bin/sh
+here=$(cd "$(dirname "$0")" && pwd)
+sysroot=${BLEED_SYSROOT:-$here/../../blibc/sysroot}
+rustlib=${BLEED_RUST_LIB:-$here/../build/lib}
+
+exec x86_64-elf-gcc -nostdlib "$sysroot/lib/start.o" -L"$rustlib" "$@" \
+    -Wl,--start-group -lc -lunwind -lgcc -Wl,--end-group
